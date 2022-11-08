@@ -2,8 +2,32 @@ import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Home } from '../pages/Home/Home';
 import { Movies } from '../pages/Movies/Movies';
+import { MovieDetails } from '../components/MovieDetails/MovieDetails';
+
+// import { useState, useEffect } from 'react';
 
 export const App = () => {
+  // const [popularMovies, setPopularMovies] = useState([]);
+
+  // const API_KEY = '301d018a3b09052968e9ce18b1793bab';
+  // const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/week?api_key=';
+
+  // const fetchPopularMovies = () => {
+  //   try {
+  //     fetch(`${BASE_URL}${API_KEY}&page=${1}`)
+  //       .then(res => res.json())
+  //       .then(obj => {
+  //         console.log(obj);
+  //         setPopularMovies(obj.results);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchPopularMovies();
+  // }, []);
   return (
     <div
       style={{
@@ -18,9 +42,9 @@ export const App = () => {
       <Routes>
         {/* <SharedLayout/> */}
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />}/>
+          <Route index element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          {/* <Route path="/movies/:movieId" element={<MovieDetails />}/> */}
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
         </Route>
       </Routes>
       {/* <Home></Home> */}
