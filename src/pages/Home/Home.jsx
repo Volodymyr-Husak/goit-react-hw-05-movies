@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { saveInLS } from '../../helpers/storage';
+import fetchGenres from '../../helpers/fetchGenres';
 // import fetchPopularMovies from '../../helpers/fetchPopularMovies';
 
 export const Home = () => {
@@ -26,6 +27,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchPopularMovies();
+    fetchGenres();
   }, []);
 
   return (
