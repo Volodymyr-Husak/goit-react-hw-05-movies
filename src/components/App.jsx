@@ -3,7 +3,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Home } from '../pages/Home/Home';
 import { Movies } from '../pages/Movies/Movies';
 import { MovieDetails } from '../components/MovieDetails/MovieDetails';
-
+import { Cast } from './Cast/Cast';
 // import { useState, useEffect } from 'react';
 
 export const App = () => {
@@ -44,7 +44,10 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
+            <Route path="/movies/:movieId/reviews" element={<Cast />} />
+          </Route>
         </Route>
       </Routes>
       {/* <Home></Home> */}
