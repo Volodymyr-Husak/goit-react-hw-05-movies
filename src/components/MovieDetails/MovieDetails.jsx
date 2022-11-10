@@ -53,7 +53,10 @@ export const MovieDetails = () => {
       <button className="movieDetails__btn">go back</button>
       <div className={css.movieDetails__container}>
         <div>
-          <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
+          <img
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt={original_title}
+          />
         </div>
         <div>
           <h2>
