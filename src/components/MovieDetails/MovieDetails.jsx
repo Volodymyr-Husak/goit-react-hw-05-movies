@@ -1,12 +1,20 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+
 import { getMovieById } from '../../helpers/getMovieById';
 import { getGenres } from 'helpers/getGenres';
 import css from './MovieDetails.module.css';
+import { Cast } from 'components/Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviews';
 
 export const MovieDetails = () => {
+  const [isShowCast, setShowCast] = useState(false);
+  const [isShowReviews, setShowReviews] = useState(false);
+
   const { movieId } = useParams();
   // console.log(movieId);
   const {
+    id,
     poster_path,
     original_title,
     overview,
@@ -14,7 +22,7 @@ export const MovieDetails = () => {
     release_date,
     vote_average,
   } = getMovieById(Number(movieId));
-  console.log('GET', getMovieById(Number(movieId)));
+  // console.log('GET', getMovieById(Number(movieId)));
 
   const genres = getGenres(genre_ids);
   // console.log(genre_ids);
@@ -23,6 +31,22 @@ export const MovieDetails = () => {
   const userScore = Math.round(vote_average * 10);
   // console.log(vote_average * 10);
   // Math.round(1.2);
+
+  const onClickLink = e => {
+    const nameLink = e.currentTarget.text;
+    switch (nameLink) {
+      case 'Cast':
+        setShowReviews(false);
+        setShowCast(prevCast => !prevCast);
+        break;
+      case 'Reviews':
+        setShowCast(false);
+        setShowReviews(prevRev => !prevRev);
+        break;
+      default:
+        console.log('Sorry, we are out of ' + nameLink + '.');
+    }
+  };
 
   return (
     <div className={css.movieDetails}>
@@ -42,6 +66,29 @@ export const MovieDetails = () => {
           <p>{genres}</p>
         </div>
       </div>
+      <p>Additional information</p>
+      <ul>
+        <li>
+          <Link
+            to={`/movies/${id}/cast`}
+            className={css.movieDetails__link}
+            onClick={onClickLink}
+          >
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={`/movies/${id}/reviews`}
+            className={css.movieDetails__link}
+            onClick={onClickLink}
+          >
+            Reviews
+          </Link>
+        </li>
+      </ul>
+      {isShowCast && <Cast />}
+      {isShowReviews && <Reviews />}
     </div>
   );
 };
