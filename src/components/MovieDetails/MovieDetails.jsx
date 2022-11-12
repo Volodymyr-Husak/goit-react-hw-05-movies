@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { getMovieById } from '../../helpers/getMovieById';
@@ -12,7 +12,11 @@ export const MovieDetails = () => {
   const [isShowReviews, setShowReviews] = useState(false);
 
   const { movieId } = useParams();
-  // console.log(movieId);
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
   const {
     id,
     poster_path,
@@ -22,15 +26,11 @@ export const MovieDetails = () => {
     release_date,
     vote_average,
   } = getMovieById(Number(movieId));
-  // console.log('GET', getMovieById(Number(movieId)));
 
   const genres = getGenres(genre_ids);
-  // console.log(genre_ids);
 
   const year = release_date.slice(0, 4);
   const userScore = Math.round(vote_average * 10);
-  // console.log(vote_average * 10);
-  // Math.round(1.2);
 
   const onClickLink = e => {
     const nameLink = e.currentTarget.text;
@@ -48,9 +48,17 @@ export const MovieDetails = () => {
     }
   };
 
+  const onClickGoBack = e => {
+    e.preventDefault();
+    navigate(location.state.from);
+  };
+
   return (
     <div className={css.movieDetails}>
-      <button className="movieDetails__btn">go back</button>
+      {/* <Link to={location.state.from}>Go back</Link> */}
+      <button onClick={onClickGoBack} className="movieDetails__btn">
+        Go back
+      </button>
       <div className={css.movieDetails__container}>
         <div>
           <img
@@ -74,6 +82,7 @@ export const MovieDetails = () => {
         <li>
           <Link
             to={`/movies/${id}/cast`}
+            state={location.state}
             className={css.movieDetails__link}
             onClick={onClickLink}
           >
@@ -83,6 +92,7 @@ export const MovieDetails = () => {
         <li>
           <Link
             to={`/movies/${id}/reviews`}
+            state={location.state}
             className={css.movieDetails__link}
             onClick={onClickLink}
           >
