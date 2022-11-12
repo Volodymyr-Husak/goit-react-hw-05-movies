@@ -8,7 +8,7 @@ export default function fetchGenres() {
     fetch(`${BASE_URL}${API_KEY}&page=${1}`)
       .then(res => res.json())
       .then(obj => {
-        console.log(obj.genres);
+        // console.log(obj.genres);
         saveInLS('Genres', obj.genres);
       });
 
