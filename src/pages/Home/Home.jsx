@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { saveInLS } from '../../helpers/storage';
@@ -16,8 +15,8 @@ export const Home = () => {
       fetch(`${BASE_URL}${API_KEY}&page=${1}`)
         .then(res => res.json())
         .then(obj => {
-          console.log(obj);
-          saveInLS('PopularMovie', obj.results);
+          // console.log(obj);
+          saveInLS('Movie', obj.results);
           setPopularMovies(obj.results);
         });
     } catch (error) {
@@ -31,37 +30,19 @@ export const Home = () => {
   }, []);
 
   return (
-    // <Link></Link>
     <>
       <h2>Trending today</h2>
       <ul>
         {popularMovies.map(({ id, original_title }) => {
-          // return <div key={id}>{original_title}</div>;
           return (
             <li key={id}>
-              <Link to={`/movies/${id}`}>{original_title}</Link>
+              <Link to={`/movies/${id}`} state={{ from: '/' }}>
+                {original_title}
+              </Link>
             </li>
           );
         })}
       </ul>
-
-      {/* <Link to={`${product.id}`}>
-        <img src="https://via.placeholder.com/200x100" alt="" />
-        <ProductName>{product.name}</ProductName>
-      </Link> */}
-      {/* <Link to="/movies/:movieId">Home</Link> */}
-      {/* {this.props.arrImage.map(({ id, webformatURL, largeImageURL, tags}) => {
-          return (
-            <ImageGalleryItem
-              key={id}
-              id={id}
-              webformatURL={webformatURL}
-              largeImageURL={largeImageURL}
-              tags={tags}
-              onClickImage={this.props.onClickImage}
-            />
-          );
-        })} */}
     </>
   );
 };
