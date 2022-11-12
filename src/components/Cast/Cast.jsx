@@ -18,7 +18,7 @@ export const Cast = () => {
       )
         .then(res => res.json())
         .then(obj => {
-          console.log(obj);
+          // console.log(obj);
           setCast(obj.cast);
           return obj.cast;
         });
@@ -30,7 +30,7 @@ export const Cast = () => {
     fetchCast(movieId);
   }, [movieId]);
 
-  console.log('cast', cast);
+  // console.log('cast', cast);
 
   //   let profilePath = '';
 
