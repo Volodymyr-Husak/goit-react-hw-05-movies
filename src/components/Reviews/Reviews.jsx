@@ -14,7 +14,7 @@ export const Reviews = () => {
       )
         .then(res => res.json())
         .then(obj => {
-          console.log(obj.results);
+          // console.log(obj.results);
           setReviews(obj.results);
           return obj.cast;
         });
