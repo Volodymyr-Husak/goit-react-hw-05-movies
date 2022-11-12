@@ -7,7 +7,7 @@ export default function fetchCast(movieId) {
     )
       .then(res => res.json())
       .then(obj => {
-        console.log(obj.cast);
+        // console.log(obj.cast);
         return obj.cast;
       });
   } catch (error) {
