@@ -1,7 +1,6 @@
 import { loadWithLS } from './storage';
 
-const movies = loadWithLS('PopularMovie');
-
 export const getMovieById = movieId => {
+  const movies = loadWithLS('Movie');
   return movies.find(movie => movie.id === movieId);
 };
