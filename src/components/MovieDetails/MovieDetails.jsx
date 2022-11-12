@@ -50,7 +50,9 @@ export const MovieDetails = () => {
 
   const onClickGoBack = e => {
     e.preventDefault();
-    navigate(location.state.from);
+    // console.log(location.state.from);
+    const backLink = location.state?.from ?? '/';
+    navigate(backLink);
   };
 
   return (
