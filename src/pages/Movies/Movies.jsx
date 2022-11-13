@@ -2,7 +2,8 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import fetchGenres from '../../helpers/fetchGenres';
 import { saveInLS } from '../../helpers/storage';
-export const Movies = () => {
+
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
 
@@ -81,3 +82,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

@@ -1,13 +1,14 @@
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 
 import { getMovieById } from '../../helpers/getMovieById';
 import { getGenres } from 'helpers/getGenres';
 import css from './MovieDetails.module.css';
-import { Cast } from 'components/Cast/Cast';
-import { Reviews } from 'components/Reviews/Reviews';
-
-export const MovieDetails = () => {
+// import {Cast from} 'components/Cast/Cast';
+// import { Reviews } from 'components/Reviews/Reviews';
+const Cast = lazy(() => import('../Cast/Cast'));
+const Reviews = lazy(() => import('../Reviews/Reviews'));
+const MovieDetails = () => {
   const [isShowCast, setShowCast] = useState(false);
   const [isShowReviews, setShowReviews] = useState(false);
 
@@ -107,3 +108,5 @@ export const MovieDetails = () => {
     </div>
   );
 };
+
+export default MovieDetails;
