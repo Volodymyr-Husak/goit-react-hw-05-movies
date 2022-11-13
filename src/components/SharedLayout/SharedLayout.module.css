@@ -1,0 +1,20 @@
+.header {
+  border-bottom: solid;
+}
+
+.navigation__list {
+  display: flex;
+  list-style: none;
+}
+
+.navigation__item {
+  margin-right: 20px;
+}
+
+/* .navigation__link {
+  text-decoration: none;
+}
+
+.active {
+  color: red;
+} */
