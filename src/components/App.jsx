@@ -1,33 +1,18 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Home } from '../pages/Home/Home';
-import { Movies } from '../pages/Movies/Movies';
-import { MovieDetails } from '../components/MovieDetails/MovieDetails';
-import { Cast } from './Cast/Cast';
-// import { useState, useEffect } from 'react';
+// import { Movies } from '../pages/Movies/Movies';
+// import { MovieDetails } from '../components/MovieDetails/MovieDetails';
+// import { Cast } from './Cast/Cast';
+// import { Reviews } from './Reviews/Reviews';
+
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
-  // const [popularMovies, setPopularMovies] = useState([]);
-
-  // const API_KEY = '301d018a3b09052968e9ce18b1793bab';
-  // const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/week?api_key=';
-
-  // const fetchPopularMovies = () => {
-  //   try {
-  //     fetch(`${BASE_URL}${API_KEY}&page=${1}`)
-  //       .then(res => res.json())
-  //       .then(obj => {
-  //         console.log(obj);
-  //         setPopularMovies(obj.results);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchPopularMovies();
-  // }, []);
   return (
     <div
       style={{
@@ -39,27 +24,42 @@ export const App = () => {
         color: '#010101',
       }}
     >
+      {/* <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route      path="movies"  element={     <> <Outlet />    </>
+            }
+          >
+            <Route index element={<SearchMovie />}></Route>
+            <Route path=":movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />}></Route>
+              <Route path="reviews" element={<Reviews />}></Route>
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </Suspense> */}
+      {/* <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path=":movieId" element={<MovieDetails />}>
+            <Route path="movieId/cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes> */}
+
       <Routes>
-        {/* <SharedLayout/> */}
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="/movies/:movieId/cast" element={<Cast />} />
-            <Route path="/movies/:movieId/reviews" element={<Cast />} />
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
           </Route>
         </Route>
       </Routes>
-      {/* <Home></Home> */}
-
-      {/* '/' – компонент Home, домашня сторінка зі списком популярних кінофільмів.
-      '/movies' – компонент Movies, сторінка пошуку кінофільмів за ключовим
-      словом. 
-      '/movies/:movieId' – компонент MovieDetails, сторінка з детальною
-      інформацією про кінофільм. 
-      /movies/:movieId/cast – компонент Cast, інформація про акторський склад. Рендериться на сторінці MovieDetails.
-      /movies/:movieId/reviews – компонент Reviews, інформація про огляди.
-      Рендериться на сторінці MovieDetails. */}
 
       {/*<nav>
         <Link to="/">Home</Link>
