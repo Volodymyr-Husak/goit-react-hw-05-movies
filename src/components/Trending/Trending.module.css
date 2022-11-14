@@ -1,0 +1,18 @@
+.trending__list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.trending__item{
+    width: 300px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: rgb(175, 150, 117);
+}
+
+.trending__text{
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}

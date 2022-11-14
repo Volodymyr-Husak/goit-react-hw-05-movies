@@ -1,4 +1,4 @@
-import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, lazy } from 'react';
 import { Section } from 'components/Section/Section';
 import { LinkEl, Button } from './MovieDetails.styled';
@@ -23,13 +23,8 @@ const MovieDetails = () => {
 
   useEffect(() => {
     api.getMovieId(movieId).then(resp => {
-      // console.log(resp);
       setMovie(resp);
-      // saveInLS('Movie', resp.results);
-      // setPopularMovies(resp.results);
     });
-    // fetchPopularMovies();
-    // fetchGenres();
   }, [movieId]);
 
   // const {
@@ -75,7 +70,6 @@ const MovieDetails = () => {
 
   const onClickGoBack = e => {
     e.preventDefault();
-    // console.log(location.state.from);
     const backLink = location.state?.from ?? '/';
     navigate(backLink);
   };

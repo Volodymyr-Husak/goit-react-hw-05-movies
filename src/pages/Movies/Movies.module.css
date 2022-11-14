@@ -1,0 +1,40 @@
+/* .movies__container{
+    text-align: center;
+} */
+.movies__form{
+    text-align: center;
+    height: 50px;
+}
+
+ .movies__form_input{
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.movies__form_btn{
+    background-color: rgb(125, 196, 196);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+} 
+
+.movies__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.movies__item {
+    width: 300px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: rgb(175, 150, 117);
+}
+
+.movies__text {
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}

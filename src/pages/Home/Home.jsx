@@ -7,6 +7,7 @@ export const Home = () => {
 
   useEffect(() => {
     api.fetchPopularMovies().then(resp => {
+      console.log(resp.results);
       setPopularMovies(resp.results);
     });
   }, []);

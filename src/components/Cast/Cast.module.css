@@ -15,3 +15,10 @@
 .cast__item:hover{
     scale: 1.1;
 }
+
+.cast__img{
+    height: 450px;
+}
+.cast__item_info{
+    padding: 15px;
+}

@@ -9,8 +9,12 @@ export const LinkEl = styled(NavLink)`
   font-weight: 500;
 
   &.active {
-    color: red;
-    background-color: orange;
+    color: rgb(180, 72, 30);
+    background-color: rgb(172, 142, 103);
+  }
+  &:hover {
+    color: rgb(180, 72, 30);
+    background-color: rgb(172, 142, 103);
   }
 `;
 export const Button = styled.button`
@@ -20,4 +24,8 @@ export const Button = styled.button`
   border-radius: 4px;
   color: blue;
   font-size: 500;
+  &:hover {
+    color: rgb(180, 72, 30);
+    background-color: rgb(172, 142, 103);
+  }
 `;
