@@ -13,3 +13,11 @@ export const LinkEl = styled(NavLink)`
     background-color: orange;
   }
 `;
+export const Button = styled.button`
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 10px 0;
+  border-radius: 4px;
+  color: blue;
+  font-size: 500;
+`;

@@ -1,6 +1,7 @@
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, lazy } from 'react';
-
+import { Section } from 'components/Section/Section';
+import { LinkEl, Button } from './MovieDetails.styled';
 // import { getMovieById } from '../../helpers/getMovieById';
 // import { getGenres } from '../../helpers/getGenres';
 import * as api from '../../helpers/api';
@@ -80,13 +81,13 @@ const MovieDetails = () => {
   };
 
   return (
-    <div className={css.movieDetails}>
+    <Section className={css.movieDetails}>
       {/* <Link to={location.state.from}>Go back</Link> */}
-      <button onClick={onClickGoBack} className="movieDetails__btn">
+      <Button onClick={onClickGoBack} className="movieDetails__btn">
         Go back
-      </button>
+      </Button>
       <div className={css.movieDetails__container}>
-        <div>
+        <div className={css.movieDetails__imgContainer}>
           <img
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
             alt={movie.original_title}
@@ -104,31 +105,31 @@ const MovieDetails = () => {
         </div>
       </div>
       <p>Additional information</p>
-      <ul>
-        <li>
-          <Link
+      <ul className={css.movieDetails__listLink}>
+        <li className={css.movieDetails__itemLink}>
+          <LinkEl
             to={`/movies/${movie.id}/cast`}
             state={location.state}
             className={css.movieDetails__link}
             onClick={onClickLink}
           >
             Cast
-          </Link>
+          </LinkEl>
         </li>
-        <li>
-          <Link
+        <li className={css.movieDetails__itemLink}>
+          <LinkEl
             to={`/movies/${movie.id}/reviews`}
             state={location.state}
             className={css.movieDetails__link}
             onClick={onClickLink}
           >
             Reviews
-          </Link>
+          </LinkEl>
         </li>
       </ul>
       {isShowCast && <Cast />}
       {isShowReviews && <Reviews />}
-    </div>
+    </Section>
   );
 };
 

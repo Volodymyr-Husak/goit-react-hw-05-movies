@@ -1,13 +1,28 @@
 .movieDetails {
-  width: 1200px;
   font-size: 23px;
 }
 .movieDetails__container {
   display: flex;
+  border-bottom: black solid 5px;
+}
+
+.movieDetails__imgContainer{
+  margin-right: 20px;
+}
+
+.movieDetails__listLink {
+  /* border-top: black solid 5px; */
+  border-bottom: black solid 5px;
+  list-style: none;
+  padding: 0;
+}
+
+.movieDetails__itemLink {
+  margin: 40px 0px;
 }
 /* .movieDetails__img {
   /* width: 100%; */
-  /* width: 600px; */
+/* width: 600px; */
 /* } */
 /* .movieDetails__link{
   display: block;

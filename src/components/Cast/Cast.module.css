@@ -1,0 +1,17 @@
+.cast__list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.cast__item{
+    border: black solid 1px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    background-color:rgb(153, 177, 177)
+}
+
+.cast__item:hover{
+    scale: 1.1;
+}

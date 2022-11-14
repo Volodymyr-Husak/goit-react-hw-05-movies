@@ -1,5 +1,7 @@
 .header {
   border-bottom: solid;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .navigation__list {

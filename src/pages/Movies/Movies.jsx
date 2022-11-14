@@ -1,8 +1,8 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Section } from 'components/Section/Section';
 // import { toast } from 'react-toastify';
-// import fetchGenres from '../../helpers/fetchGenres';
-// import { saveInLS } from '../../helpers/storage';
+
 import * as api from '../../helpers/api';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -12,25 +12,6 @@ const Movies = () => {
   const nameMovie = searchParams.get('query');
 
   const location = useLocation();
-  //   console.log(location);
-
-  // const API_KEY = '301d018a3b09052968e9ce18b1793bab';
-  // const BASE_URL = 'https://api.themoviedb.org/3/search/movie?api_key=';
-
-  // const fetchMovies = movieName => {
-  //   try {
-  //     fetch(
-  //       `${BASE_URL}${API_KEY}&query=${movieName}&language=en-US&page=1&include_adult=false`
-  //     )
-  //       .then(res => res.json())
-  //       .then(obj => {
-  //         saveInLS('Movie', obj.results);
-  //         setMovies(obj.results);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   useEffect(() => {
     if (nameMovie === '' || nameMovie === null) return;
@@ -47,23 +28,16 @@ const Movies = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setQuery('');
-    // fetchMovies(query);
+
     if (query.trim() === '') return alert('Введіть назву фільму');
     // if (query.trim() === '') return toast.warn('Введіть назву фільму');
-    // if (query.trim() === '') return toast('Введіть назву фільму');
-    // if (query.trim() === '') {
-    //   toast.warn('Введіть назву зображення');
-    //   return;
-    // }
 
-    //   return toast.warn('Введіть назву фільму');
-    // } else {
     api.fetchMoviesSearch(query).then(resp => setMovies(resp.results));
-    // fetchGenres();
+
     setSearchParams({ query: query });
   };
   return (
-    <>
+    <Section>
       <form className="{css.searchForm}" onSubmit={handleSubmit}>
         <button className="{css.searchForm_button}" type="submit">
           <span className="{css.searchForm_button_label}">Search</span>
@@ -94,7 +68,7 @@ const Movies = () => {
           );
         })}
       </ul>
-    </>
+    </Section>
   );
 };
 

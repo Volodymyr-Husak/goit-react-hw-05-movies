@@ -7,19 +7,15 @@ import { LinkEl } from './SharedLayout.styled';
 import css from './SharedLayout.module.css';
 export const SharedLayout = () => {
   return (
-    <div>
+    <>
       <header className={css.header}>
         <nav>
           <ul className={css.navigation__list}>
             <li className={css.navigation__item}>
-              <LinkEl to="/" className={css.navigation__link}>
-                Home
-              </LinkEl>
+              <LinkEl to="/">Home</LinkEl>
             </li>
             <li>
-              <LinkEl to="/movies" className={css.navigation__link}>
-                Movies
-              </LinkEl>
+              <LinkEl to="/movies">Movies</LinkEl>
             </li>
           </ul>
         </nav>
@@ -27,6 +23,6 @@ export const SharedLayout = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 };
